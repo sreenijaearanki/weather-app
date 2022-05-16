@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+</head>
+<body>
+        <div class="text-center">
+          <br>
+          <h2>Hello! You are logged in.</h2>
+          <br>
+          <a href="{{url_for('logout')}}">Click here to logout</a>
+        </div>
+       
+        {% for data in weatherData %}
+            <div class="col d-flex justify-content-center">
+            <div class="card border-primary mb-3" style="max-width: 24rem;">
+              <div class="col text-center">
+                <div class="card-body">
+                  <div class="card-header"><h3>City: {{data}}</h3></div>
+                  <p class="card-text">
+                    <h5>Country Code : {{weatherData[data].country_code}}</h5>
+                    <h5>Co-ordinate : {{weatherData[data].coordinate}}</h5>
+                    <h5>Temperature (in kelvin) : {{weatherData[data].temp}}</h5>
+                    <h5>Temperature (in celcius) : {{weatherData[data].temp_cel}}</h5>
+                    <h5>Pressure : {{weatherData[data].pressure}} </h5>
+                    <h5>Humidity : {{weatherData[data].humidity}}</h5>
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        {% endfor %}
+</body>
+</html>
